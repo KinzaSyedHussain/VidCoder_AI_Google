@@ -9,7 +9,7 @@ This is a full-stack web application that allows users to upload content files (
 The application follows a client-server architecture with clear separation of concerns:
 
 - **Frontend**: React with Vite build system, styled with Tailwind CSS and shadcn/ui components
-- **Backend**: Express.js server with TypeScript for API endpoints and file handling
+- **Backend**: Python Flask server for API endpoints and file handling
 - **Database**: PostgreSQL with Drizzle ORM for data persistence
 - **File Storage**: Local file system with multer for upload handling
 - **Development Environment**: Configured for Replit with hot reloading and development workflows
@@ -24,11 +24,10 @@ The application follows a client-server architecture with clear separation of co
 - **Build Tool**: Vite with TypeScript support and development optimizations
 
 ### Backend Architecture
-- **Express.js Server**: RESTful API with TypeScript
-- **File Upload**: Multer middleware for handling multipart file uploads
-- **Database Layer**: Drizzle ORM with PostgreSQL for structured data storage
-- **Storage Strategy**: Local file system storage in uploads directory
-- **Development Tools**: tsx for TypeScript execution and hot reloading
+- **Flask Server**: RESTful API with Python
+- **File Upload**: Flask file handling with python-multipart for multipart uploads
+- **Storage Strategy**: In-memory storage with local file system for uploads
+- **Development Tools**: Python with Flask development server and hot reloading
 
 ### Database Schema
 Three main entities managed through Drizzle ORM:
@@ -57,12 +56,11 @@ Three main entities managed through Drizzle ORM:
 - **Icons**: Lucide React for consistent iconography
 
 ### Backend Dependencies
-- **Runtime**: Node.js with Express framework
-- **Database**: PostgreSQL with @neondatabase/serverless for cloud hosting
-- **ORM**: Drizzle ORM with Zod schema validation
-- **File Handling**: Multer for multipart uploads
-- **Session Management**: connect-pg-simple for PostgreSQL session storage
-- **Development**: tsx for TypeScript execution
+- **Runtime**: Python with Flask framework
+- **File Handling**: python-multipart for multipart uploads, werkzeug for file utilities
+- **Storage**: In-memory storage implementation
+- **CORS**: flask-cors for cross-origin requests
+- **Development**: Flask development server with debug mode
 
 ### Build and Development Tools
 - **Build System**: Vite with React plugin and TypeScript support
@@ -75,10 +73,10 @@ Three main entities managed through Drizzle ORM:
 The application is configured for deployment on Replit with the following setup:
 
 ### Development Mode
-- **Frontend**: Vite dev server with hot module replacement
-- **Backend**: tsx with automatic restart on file changes
-- **Database**: PostgreSQL module with automatic provisioning
-- **Port Configuration**: Backend serves on port 5000, frontend proxies API requests
+- **Frontend**: Vite build serves static files through Flask
+- **Backend**: Python Flask server with debug mode and auto-reload
+- **Storage**: In-memory storage for development
+- **Port Configuration**: Flask serves on port 5000, serving both API and static frontend
 
 ### Production Build
 - **Frontend**: Vite builds static assets to dist/public
@@ -106,3 +104,8 @@ Preferred communication style: Simple, everyday language.
   - Enhanced placeholder AI logic with more realistic code extraction and improvement
   - Fixed TypeScript compilation errors
   - Updated branding throughout application
+- June 21, 2025: Complete conversion from Node.js to Python Flask
+  - Converted entire backend from Express.js/TypeScript to Python Flask
+  - Maintained identical UI and functionality
+  - Preserved all API endpoints and response formats
+  - Updated deployment configuration for Python runtime
