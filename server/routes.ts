@@ -15,7 +15,7 @@ if (!fs.existsSync(uploadDir)) {
 const upload = multer({
   dest: uploadDir,
   limits: {
-    fileSize: 10 * 1024 * 1024, // 10MB limit
+    fileSize: 200 * 1024 * 1024, // 200MB limit
   },
   fileFilter: (req, file, cb) => {
     // Accept video, image, and PDF files
@@ -37,116 +37,244 @@ const upload = multer({
   }
 });
 
-// Mock AI processing functions
+// PLACEHOLDER AI PROCESSING FUNCTIONS - Will be replaced with Google Cloud ADK integration
 function simulateCodeExtraction(file: any): string {
-  // Mock extraction based on file type
+  // Enhanced placeholder logic based on file type with intentional errors for improvement demo
   const mockCodes = {
-    'application/pdf': `# Extracted from PDF
-def process_document(doc_path):
-    """Process a PDF document and extract text"""
-    with open(doc_path, 'rb') as file:
-        # PDF processing logic here
-        return extract_text(file)
+    // For image and PDF files - return Python code with intentional syntax error
+    'application/pdf': `# Extracted from PDF document
+from flask import Flask, request, jsonify
+import os
 
-def extract_text(file_obj):
-    """Extract text from PDF file object"""
-    # Implementation would use PyPDF2 or similar
-    return "Extracted text content"`,
-    
-    'image/jpeg': `# Extracted from image using OCR
-import cv2
-import pytesseract
+app = Flask(__name__)
 
-def extract_code_from_image(image_path):
-    """Extract code from image using OCR"""
-    image = cv2.imread(image_path)
-    gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+@app.route('/api/upload', methods=['POST'])
+def upload_file()  # Missing colon - intentional error for improvement demo
+    if 'file' not in request.files:
+        return jsonify({'error': 'No file provided'}), 400
     
-    # Apply preprocessing
-    processed = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
+    file = request.files['file']
+    if file.filename == '':
+        return jsonify({'error': 'No file selected'}), 400
     
-    # Extract text
-    text = pytesseract.image_to_string(processed)
-    return text`,
+    # Save uploaded file
+    filename = secure_filename(file.filename)
+    file.save(os.path.join('uploads', filename))
     
-    'image/png': `# Extracted from PNG image
-def analyze_screenshot(img_path):
-    """Analyze code screenshot and extract content"""
-    from PIL import Image
-    import numpy as np
-    
-    img = Image.open(img_path)
-    img_array = np.array(img)
-    
-    # Process image to extract code
-    return process_code_regions(img_array)
+    return jsonify({'message': 'File uploaded successfully', 'filename': filename})
 
-def process_code_regions(image_array):
-    """Process regions that contain code"""
-    # Implementation for code region detection
-    return "Detected code content"`,
+if __name__ == '__main__':
+    app.run(debug=True)`,
     
-    'video/mp4': `# Extracted from video transcription
-def transcribe_coding_video(video_path):
-    """Extract code from coding tutorial video"""
-    import speech_recognition as sr
-    
-    # Extract audio from video
-    audio = extract_audio(video_path)
-    
-    # Transcribe speech to text
-    r = sr.Recognizer()
-    with sr.AudioFile(audio) as source:
-        audio_data = r.record(source)
-        text = r.recognize_google(audio_data)
-    
-    return parse_code_from_transcript(text)
+    'image/jpeg': `# Extracted from code screenshot
+import pandas as pd
+import matplotlib.pyplot as plt
 
-def extract_audio(video_path):
-    """Extract audio track from video"""
-    # Implementation using ffmpeg or similar
-    return "extracted_audio.wav"`
+def analyze_data(data_file_path):
+    # Load the dataset
+    df = pd.read_csv(data_file_path
+    
+    # Basic statistics
+    print("Dataset shape:", df.shape)
+    print("\\nColumn info:")
+    print(df.info())
+    
+    # Missing values check
+    missing_values = df.isnull().sum()
+    print("\\nMissing values:", missing_values)
+    
+    return df
+
+def create_visualization(dataframe):
+    plt.figure(figsize=(10, 6))
+    dataframe.hist(bins=20)
+    plt.tight_layout()
+    plt.show()`,
+    
+    'image/png': `# Extracted from PNG screenshot
+def process_user_data(user_input_data):
+    """Process and validate user input data"""
+    processed_results = []
+    
+    for item in user_input_data:
+        if item.get('status') == 'active':
+            # Process active items
+            processed_item = {
+                'id': item['id'],
+                'name': item['name'],
+                'processed_at': datetime.now()
+            }
+            processed_results.append(processed_item
+    
+    return processed_results
+
+def generate_report(data):
+    """Generate summary report from processed data"""
+    total_items = len(data)
+    return f"Processed {total_items} items successfully"`,
+    
+    // For video files - return JavaScript code with improvement opportunities
+    'video/mp4': `// Extracted from coding tutorial video
+import React, { useState, useEffect } from 'react';
+
+const UserDashboardComponentWithVeryLongVariableNames = () => {
+  const [userDataFromAPICallThatIsVeryLong, setUserDataFromAPICallThatIsVeryLong] = useState([]);
+  const [isLoadingStateForAPICallToBackend, setIsLoadingStateForAPICallToBackend] = useState(false);
+
+  useEffect(() => {
+    fetchUserDataFromBackendAPIEndpoint();
+  }, []);
+
+  const fetchUserDataFromBackendAPIEndpoint = async () => {
+    setIsLoadingStateForAPICallToBackend(true);
+    try {
+      const responseFromBackendAPICall = await fetch('/api/users');
+      const dataFromAPIResponse = await responseFromBackendAPICall.json();
+      setUserDataFromAPICallThatIsVeryLong(dataFromAPIResponse);
+    } catch (error) {
+      console.log('Error fetching data');
+    }
+    setIsLoadingStateForAPICallToBackend(false);
   };
 
-  return mockCodes[file.mimetype as keyof typeof mockCodes] || `# Extracted code
-def sample_function():
-    """Sample extracted function"""
-    print("Hello, World!")
-    return True`;
+  return (
+    <div>
+      <h2>User Dashboard</h2>
+      {isLoadingStateForAPICallToBackend ? (
+        <p>Loading...</p>
+      ) : (
+        <ul>
+          {userDataFromAPICallThatIsVeryLong.map(user => (
+            <li key={user.id}>{user.name}</li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+};`,
+
+    'video/avi': `// Extracted from video tutorial
+function processOrderData(orders) {
+    let totalRevenue = 0;
+    let processedOrders = [];
+    
+    for (let i = 0; i < orders.length; i++) {
+        if (orders[i].status === 'completed') {
+            totalRevenue += orders[i].amount;
+            processedOrders.push({
+                orderId: orders[i].id,
+                customerName: orders[i].customer.firstName + ' ' + orders[i].customer.lastName,
+                orderTotal: orders[i].amount,
+                processedDate: new Date().toISOString()
+            });
+        }
+    }
+    
+    return {
+        totalRevenue: totalRevenue,
+        processedCount: processedOrders.length,
+        orders: processedOrders
+    };
+}`,
+
+    'video/quicktime': `// Extracted from QuickTime screen recording
+const apiEndpointForDataRetrieval = 'https://api.example.com/data';
+
+async function retrieveAndProcessDataFromAPI() {
+    const responseFromHTTPRequest = await fetch(apiEndpointForDataRetrieval);
+    const jsonDataFromAPIResponse = await responseFromHTTPRequest.json();
+    
+    const processedDataArrayFromAPICall = jsonDataFromAPIResponse.map(itemFromAPIResponse => {
+        return {
+            id: itemFromAPIResponse.id,
+            title: itemFromAPIResponse.title,
+            description: itemFromAPIResponse.description
+        };
+    });
+    
+    return processedDataArrayFromAPICall;
+}`
+  };
+
+  // Return appropriate mock code based on file type, fallback to Python with error
+  return mockCodes[file.mimetype as keyof typeof mockCodes] || `# Extracted code from unknown file type
+def process_file(file_path):
+    """Basic file processing function"""
+    with open(file_path, 'r') as f
+        content = f.read()
+        return content.strip()
+
+def main():
+    result = process_file('input.txt')
+    print(f"Processed: {result}")`;
 }
 
+// PLACEHOLDER CODE IMPROVEMENT - Will be replaced with Google Cloud ADK integration
 function simulateCodeImprovement(originalCode: string): string {
-  // Mock improvement - add docstrings, type hints, and better formatting
-  const improvedCode = originalCode
-    .replace(/def (\w+)\(/g, 'def $1(')
-    .replace(/def (\w+)\((.*?)\):/g, (match, funcName, params) => {
-      if (!params.includes(':')) {
-        return `def ${funcName}(${params}) -> Any:`;
-      }
-      return match;
-    });
+  // Enhanced placeholder logic to fix specific errors and improve code quality
+  
+  // Fix Python syntax errors (missing colons, parentheses)
+  if (originalCode.includes('def ') && originalCode.includes('# Extracted from PDF') || originalCode.includes('# Extracted from code screenshot') || originalCode.includes('# Extracted from PNG screenshot')) {
+    return originalCode
+      // Fix missing colon after function definition
+      .replace(/def (\w+)\([^)]*\)\s*(?!:)/g, 'def $1():')
+      // Fix missing closing parenthesis in read_csv
+      .replace(/pd\.read_csv\([^)]+(?!\))/g, match => match + ')')
+      // Fix missing closing parenthesis in append calls
+      .replace(/\.append\([^)]+(?!\))/g, match => match + ')')
+      // Fix missing closing parenthesis in open calls
+      .replace(/with open\([^)]+(?!\))/g, match => match + ')')
+      // Add proper imports if missing
+      .replace(/^(# Extracted from)/m, `$1
+from datetime import datetime
+from werkzeug.utils import secure_filename
 
-  return `# Improved version with better practices
-from typing import Any, Optional
-import logging
+`)
+      // Add comments for clarity
+      .replace(/(def \w+\([^)]*\):)/g, '$1\n    """Improved function with proper error handling"""');
+  }
+  
+  // Improve JavaScript code (shorten variable names, add comments)
+  if (originalCode.includes('//') || originalCode.includes('const ') || originalCode.includes('function ')) {
+    return originalCode
+      // Shorten long variable names
+      .replace(/userDataFromAPICallThatIsVeryLong/g, 'userData')
+      .replace(/isLoadingStateForAPICallToBackend/g, 'isLoading')
+      .replace(/UserDashboardComponentWithVeryLongVariableNames/g, 'UserDashboard')
+      .replace(/fetchUserDataFromBackendAPIEndpoint/g, 'fetchUserData')
+      .replace(/responseFromBackendAPICall/g, 'response')
+      .replace(/dataFromAPIResponse/g, 'data')
+      .replace(/responseFromHTTPRequest/g, 'response')
+      .replace(/jsonDataFromAPIResponse/g, 'jsonData')
+      .replace(/processedDataArrayFromAPICall/g, 'processedData')
+      .replace(/itemFromAPIResponse/g, 'item')
+      .replace(/apiEndpointForDataRetrieval/g, 'API_ENDPOINT')
+      // Add helpful comments
+      .replace(/(\/\/ Extracted from.*)/g, `$1
+// Improved version with better variable names and error handling
 
-# Configure logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+`)
+      // Improve error handling
+      .replace(/console\.log\('Error fetching data'\);/g, `console.error('Failed to fetch user data:', error);`)
+      // Add proper error handling to fetch calls
+      .replace(/(const response = await fetch\([^)]+\);)/g, `$1
+      if (!response.ok) {
+        throw new Error(\`HTTP error! status: \${response.status}\`);
+      }`);
+  }
+  
+  // Fallback improvement for any other code
+  return `// IMPROVED CODE - Enhanced with best practices and error handling
 
-${improvedCode}
+${originalCode}
 
-# Added error handling and logging
-def handle_errors(func):
-    """Decorator for error handling"""
-    def wrapper(*args, **kwargs):
-        try:
-            logger.info(f"Executing {func.__name__}")
-            return func(*args, **kwargs)
-        except Exception as e:
-            logger.error(f"Error in {func.__name__}: {e}")
-            raise
-    return wrapper`;
+/* 
+ * Improvements made:
+ * - Fixed syntax errors
+ * - Added proper error handling
+ * - Improved variable naming
+ * - Added documentation
+ */`;
 }
 
 function detectLanguage(code: string): string {

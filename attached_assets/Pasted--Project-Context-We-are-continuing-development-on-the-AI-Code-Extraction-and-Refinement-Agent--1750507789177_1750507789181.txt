@@ -1,0 +1,57 @@
+**Project Context:**
+We are continuing development on the "AI Code Extraction and Refinement Agent" application. The current app is a React frontend with a Flask/FastAPI backend for file uploads and placeholder AI logic.
+
+**Overall Goal:**
+Refine the UI for a smoother experience, address file upload limitations, implement more convincing placeholder logic for code extraction and improvement, and update the application branding. The app name is now "VidCoder AI".
+
+---
+
+**Detailed Refinement Tasks:**
+
+**1. UI Cleanup - Remove Workflow Progress Bar:**
+    * **Action:** Locate and completely remove the visual bar at the top of the application that explicitly displays workflow steps like "Upload File - Extract Code - Improve Code - Download."
+    * **Reason:** This bar creates visual clutter and is redundant, as the user flow is guided by the interactive buttons (Extract Code, Improve Code, Download).
+    * **Constraint:** Ensure that removing this bar does NOT affect the functionality or visibility of the "Extract Code," "Improve Code," and "Download Code" buttons, which should remain prominent and functional.
+
+**2. File Upload Limit Increase:**
+    * **Action:** Modify both the frontend (React) and backend (Python Flask/FastAPI) configurations to accept larger file uploads.
+    * **New Limit:** Set the maximum allowed file size for uploads to **200 Megabytes (200MB)**.
+    * **Implementation Details (Frontend):** Ensure the React component (e.g., in the `Dropzone` or file input element) has its size validation updated.
+    * **Implementation Details (Backend):** Configure the Flask/FastAPI app (e.g., `app.config['MAX_CONTENT_LENGTH']` for Flask) to accept files up to 200MB.
+    * **User Feedback:** If a user attempts to upload a file larger than 200MB, display a clear, user-friendly error message in the application's notification area (e.g., "File too large. Maximum size is 200MB.").
+
+**3. Enhanced Placeholder Logic for Extraction and Improvement (Critical Fix):**
+
+    * **Problem Statement:** The current extraction and improvement logic is failing or not producing plausible results. We need more robust placeholder behavior to demonstrate the concept effectively for the hackathon, knowing that the actual Google Cloud ADK integration will replace this later.
+
+    * **Backend Endpoint `/extract_code` (Placeholder Refinement):**
+        * **Input Handling:** Accept an uploaded file.
+        * **Simulated Extraction:** Instead of returning generic text, implement logic to return a **predefined, well-formatted code snippet** that *looks* like it was extracted.
+        * **Conditional Simulation:**
+            * If the uploaded file is detected as an image or PDF (based on extension or simple `mimetype` check), return a Python code snippet (e.g., a simple Flask app structure or a basic `for` loop function) that *contains one obvious, correctable syntax error* (e.g., a missing colon, or mismatched parenthesis).
+            * If the uploaded file is detected as a video, return a slightly longer, more complex but still predefined JavaScript code snippet (e.g., a React component with state, or a function making an API call). This code should also include *one intentional, simple stylistic or minor logical improvement opportunity* (e.g., a long variable name that could be shortened, or a function that could be split).
+        * **Output:** The extracted code should be returned as a plain string, suitable for display in the frontend's code editor.
+
+    * **Backend Endpoint `/improve_code` (Placeholder Refinement):**
+        * **Input:** Accept the code string that was "extracted" in the previous step.
+        * **Simulated Improvement:** Implement logic to "improve" the code based on the predefined errors/opportunities introduced in the `/extract_code` placeholder.
+        * **Specific Actions:**
+            * **For the Python code:** Correct the intentional syntax error you placed there (e.g., add the missing colon, fix the parenthesis).
+            * **For the JavaScript code:** Apply a simple stylistic improvement (e.g., shorten a long variable name, add a basic comment, or reformat indentation if it's slightly off).
+        * **Output:** Return the "improved" code string. The user should be able to clearly see the simulated change.
+
+    * **General Rule for Placeholders:** Ensure these placeholder functions are clearly commented as such, indicating they will be replaced by ADK logic. Make the simulated changes visually apparent and consistent.
+
+**4. App Name Update to "VidCoder AI":**
+    * **Action:** Change all instances of the application's name or title in the frontend user interface to **"VidCoder AI"**.
+    * **Locations to Check:** This includes, but is not limited to, the main page title, any header/navbar text, browser tab title, and any introductory text.
+    * **Goal:** Ensure consistent branding throughout the user experience.
+
+---
+
+**Replit Agent Instructions:**
+* Proceed with these tasks sequentially.
+* Prioritize ensuring the file upload limit change and the placeholder logic for extraction/improvement are functional and demonstrate a clear (though simulated) transformation.
+* Maintain the clean, interactive, and responsive nature of the UI.
+* Provide clear comments in the generated code, especially for the placeholder AI logic.
+* Report any limitations or complexities encountered, particularly with the large file sizes.

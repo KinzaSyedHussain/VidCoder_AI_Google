@@ -34,11 +34,11 @@ export default function FileUpload({ onFileUploaded, disabled }: FileUploadProps
       return;
     }
 
-    // Validate file size (10MB limit)
-    if (file.size > 10 * 1024 * 1024) {
+    // Validate file size (200MB limit)
+    if (file.size > 200 * 1024 * 1024) {
       toast({
         title: "File too large",
-        description: "Please select a file smaller than 10MB.",
+        description: "Please select a file smaller than 200MB.",
         variant: "destructive"
       });
       return;

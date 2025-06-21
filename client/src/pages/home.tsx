@@ -2,7 +2,6 @@ import { useState } from "react";
 import { Code2, HelpCircle, Settings } from "lucide-react";
 import FileUpload from "@/components/file-upload";
 import CodeEditor from "@/components/code-editor";
-import WorkflowStatus from "@/components/workflow-status";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -45,7 +44,7 @@ export default function Home() {
                 <Code2 className="w-6 h-6 text-white" />
               </div>
               <div>
-                <h1 className="text-xl font-semibold text-slate-900">AI Code Agent</h1>
+                <h1 className="text-xl font-semibold text-slate-900">VidCoder AI</h1>
                 <p className="text-sm text-slate-500">Extract & Refine Code</p>
               </div>
             </div>
@@ -63,9 +62,6 @@ export default function Home() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        {/* Workflow Status */}
-        <WorkflowStatus currentStep={currentStep} />
-
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Left Panel */}
           <div className="space-y-6">

@@ -1,4 +1,4 @@
-# AI Code Extraction and Refinement Agent
+# VidCoder AI
 
 ## Overview
 
@@ -97,5 +97,12 @@ Preferred communication style: Simple, everyday language.
 
 ## Changelog
 
-Changelog:
-- June 21, 2025. Initial setup
+## Recent Changes
+
+- June 21, 2025: Initial setup with React frontend and Express backend
+- June 21, 2025: UI refinements and rebrand to "VidCoder AI"
+  - Removed workflow progress bar for cleaner interface
+  - Increased file upload limit to 200MB
+  - Enhanced placeholder AI logic with more realistic code extraction and improvement
+  - Fixed TypeScript compilation errors
+  - Updated branding throughout application

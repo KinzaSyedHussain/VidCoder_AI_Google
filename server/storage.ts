@@ -80,7 +80,10 @@ export class MemStorage implements IStorage {
     const extraction: CodeExtraction = {
       ...insertExtraction,
       id,
-      createdAt: new Date()
+      createdAt: new Date(),
+      status: insertExtraction.status || "extracted",
+      language: insertExtraction.language || null,
+      improvedCode: insertExtraction.improvedCode || null
     };
     this.codeExtractions.set(id, extraction);
     return extraction;
