@@ -1,0 +1,50 @@
+I need to build a web application for an "AI Code Extraction and Refinement Agent." This app will allow users to upload various content types (video, image, or PDF) containing programming code, extract that code, and then offer to improve it.
+
+**Core Requirements:**
+1.  **Frontend (Smooth, Interactive, Clean):**
+    * Use a modern, responsive frontend framework like React (preferred) or Vue.js. If React, use Vite for a fast setup.
+    * Implement a clean, minimalist design with a clear hierarchy. Focus on ease of use.
+    * **Main Page:** A central, prominent section for file uploads. This should support drag-and-drop.
+    * **Upload Area:** Clearly labeled area for users to drag and drop or select video, image, or PDF files.
+    * **Progress Indicator:** A simple visual indicator (e.g., loading spinner, progress bar) during processing.
+    * **Output Display:** A dedicated, well-formatted code editor component (e.g., using Monaco Editor or a similar library) to display the extracted code. It should be read-only initially.
+    * **Action Buttons:**
+        * "Extract Code" (after file upload).
+        * "Improve Code" (becomes active after code extraction).
+        * "Download Code" (becomes active after code extraction/improvement).
+    * **User Feedback/Messaging:** A subtle notification area for messages like "Processing...", "Code Extracted!", "Code Improved!", "Error: ...".
+
+2.  **Backend (Python with Flask/FastAPI - preferred Flask for simplicity):**
+    * Set up a Python backend service to handle file uploads and serve the AI agent logic.
+    * Create an endpoint `/upload` that accepts files (video, image, PDF).
+    * Create an endpoint `/extract_code` that takes a file identifier and processes it to extract code.
+    * Create an endpoint `/improve_code` that takes extracted code and returns an improved version.
+
+3.  **AI Agent Integration (Conceptual - I will implement the actual ADK logic later):**
+    * For now, the backend endpoints should contain placeholder logic or simple mock responses for code extraction and improvement. I will integrate the actual Google Cloud Agent Development Kit (ADK) logic into these backend services later.
+    * **Initial Extraction (Placeholder):** For an image/PDF, imagine a simple OCR library. For video, imagine basic speech-to-text.
+    * **Initial Improvement (Placeholder):** For "improve code," a simple function that adds comments or indents the code if it's not already.
+
+4.  **Technical Stack:**
+    * **Frontend:** React (with Vite) + Tailwind CSS for styling.
+    * **Backend:** Python 3 (Flask or FastAPI).
+    * **Hosting:** Configure for easy deployment on Replit.
+
+**Instructions for Replit Agent:**
+* Prioritize setting up the basic file upload, display, and button interactions on the frontend.
+* Then, create the Flask/FastAPI backend with the placeholder endpoints.
+* Ensure the frontend can communicate with the backend.
+* Do not worry about complex AI logic or heavy video/image processing in this initial build. Focus on the smooth user flow and clean interface.
+* Use clear, concise code with comments.
+
+**User Interaction Flow (for your understanding and future prompts):**
+1.  User lands on the page.
+2.  User drags/drops or selects a file (video, image, or PDF).
+3.  "Extract Code" button becomes active.
+4.  User clicks "Extract Code." Progress indicator shows.
+5.  Backend processes (placeholder).
+6.  Extracted code appears in the code editor. "Improve Code" and "Download Code" buttons become active.
+7.  User can click "Improve Code." Progress indicator shows.
+8.  Backend processes (placeholder).
+9.  Improved code replaces the extracted code in the editor.
+10. User can click "Download Code" to get the final file.
