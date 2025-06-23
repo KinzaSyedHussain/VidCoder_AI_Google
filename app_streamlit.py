@@ -59,7 +59,7 @@ with tabs[0]:
     st.markdown("Upload an image containing code, and let AI extract and refine it for you.")
     uploaded_file = st.file_uploader(
         "Choose a file",
-        type=[ 'png', 'jpg', 'jpeg'],
+        type=[ 'png', 'jpg', 'jpeg', 'pdf'],
         key=st.session_state.upload_key
     )
     if uploaded_file is not None:
@@ -99,7 +99,12 @@ with tabs[0]:
             else:
                 st.markdown(f"*Detected language:* Unknown")
         result = st.session_state.get('result', {})
-        # Show only the transcript as the main code output
+        code_section("Your Code", st.session_state.get('extracted_code', ''), result.get('language', 'python'), 'extracted')
+        code_section("Generated Code", result.get('generated_code', ''), result.get('generated_code_language', None), 'generated')
+        code_section("Enhanced Code", result.get('enhanced_code', ''), result.get('enhanced_code_language', None), 'enhanced')
+        if result.get('explanation'):
+            st.subheader("Explanation:")
+            st.markdown(result['explanation'])
         if result.get('transcript'):
             st.subheader("Transcript:")
             st.code(result.get('transcript', ''))
@@ -109,13 +114,6 @@ with tabs[0]:
                 file_name="transcript.txt",
                 mime="text/plain"
             )
-        if result.get('generated_code', ''):
-            code_section("Generated Code", result.get('generated_code', ''), result.get('generated_code_language', None), 'generated')
-        if result.get('enhanced_code', ''):
-            code_section("Enhanced Code", result.get('enhanced_code', ''), result.get('enhanced_code_language', None), 'enhanced')
-        if result.get('explanation'):
-            st.subheader("Explanation:")
-            st.markdown(result['explanation'])
         if result.get('review'):
             st.subheader("Code Review:")
             st.markdown(result.get('review', ''))

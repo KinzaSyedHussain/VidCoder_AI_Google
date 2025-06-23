@@ -10,7 +10,7 @@ def run(input_data):
         return input_data
 
     genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-    model = genai.GenerativeModel('models/gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-1.5-flash')
     prompt = f"Improve and refactor the following code. Fix any errors and make it more readable:\n\n{code}"
     response = model.generate_content(prompt)
     input_data['explanation'] = response.text

@@ -22,7 +22,7 @@ def run(input_data):
         code=code
     )
     try:
-        model = genai.GenerativeModel('gemini-1.5-flash')  # or 'gemini-1.5-pro' if you have access
+        model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt)
         translated_code = response.text if hasattr(response, 'text') else str(response)
     except Exception as e:

@@ -17,7 +17,7 @@ class LanguageTranslatorADKAgent(Agent):
         detected_language = 'unknown'
         # 1. Detect language using Gemini
         try:
-            model = genai.GenerativeModel('models/gemini-1.5-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash')
             prompt = PROMPT_DETECT.format(code=code)
             response = model.generate_content(prompt)
             detected = response.text.strip().lower()

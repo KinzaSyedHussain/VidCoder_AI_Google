@@ -20,10 +20,10 @@ from PIL import Image
 # --- Configuration ---
 # Paste your API Key from Google AI Studio here.
 # IMPORTANT: Do not share this file publicly with your key in it.
-API_KEY = "AIzaSyAQ_vBvgtpcjrZeJOeLmm-zpNBlV-HaK6c"
+API_KEY = "AIzaSyAwUpeiijWQDPzWuWf_D0YVl90qrb_q6aY"
 
 try:
-    if API_KEY == "AIzaSyAQ_vBvgtpcjrZeJOeLmm-zpNBlV-HaK6c" or not API_KEY:
+    if API_KEY == "AIzaSyAwUpeiijWQDPzWuWf_D0YVl90qrb_q6aY" or not API_KEY:
         raise ValueError("API_KEY not set. Please paste your key from aistudio.google.com/app/apikey in agent.py")
     genai.configure(api_key=API_KEY)
 except Exception as e:

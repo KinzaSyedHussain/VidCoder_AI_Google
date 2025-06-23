@@ -26,7 +26,7 @@ class LanguageDetectorAgent(Agent):
         print("[DEBUG] Input code for detection:", repr(code))
         # 1. Try Gemini API for language detection (with improved prompt)
         try:
-            model = genai.GenerativeModel('models/gemini-1.5-flash')
+            model = genai.GenerativeModel('gemini-1.5-flash')
             prompt = PROMPT.format(code=code)
             response = model.generate_content(prompt)
             print("[DEBUG] Gemini response:", response.text)
