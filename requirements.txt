@@ -9,5 +9,6 @@ pyyaml
 pandas
 numpy
 opentelemetry-api
+fastapi
 
 
