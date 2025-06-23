@@ -47,6 +47,10 @@ Visit the live app 👉 **[VidCoder AI - Streamlit](https://vidcoderaiapp-zva6yo
 - 💬 Chat-based code assistant integration
 
 ---
+## Architecture Diagram
+
+![WhatsApp Image 2025-06-24 at 02 24 03_6a067a02](https://github.com/user-attachments/assets/7e870a06-3dcc-482a-bb36-3e860ba46460)
+---
 
 ## 🛠️ Tech Stack
 
@@ -72,7 +76,5 @@ VidCoder-AI/
 ├── requirements.txt         # Python dependencies
 └── README.md                # You're here!
 
-## Architecture Diagram
 
-![WhatsApp Image 2025-06-24 at 02 24 03_6a067a02](https://github.com/user-attachments/assets/7e870a06-3dcc-482a-bb36-3e860ba46460)
 
