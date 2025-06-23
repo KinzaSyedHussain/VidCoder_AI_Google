@@ -45,4 +45,6 @@ def process_file(file_path):
     return result
 
 if __name__ == "__main__":
-    print("[Stub] This will orchestrate the agent workflow as defined in agent.yaml.") 
+    print("[Stub] This will orchestrate the agent workflow as defined in agent.yaml.")
+
+__all__ = ["process_file"] 
