@@ -10,5 +10,6 @@ pandas
 numpy
 opentelemetry-api
 fastapi
+google-cloud-storage
 
 
