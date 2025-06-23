@@ -8,4 +8,6 @@ pdf2image
 pyyaml
 pandas
 numpy
+opentelemetry-api
+
 
