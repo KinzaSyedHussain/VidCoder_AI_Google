@@ -1,10 +1,11 @@
 streamlit
 python-dotenv
 google-generativeai
+google-genai
 pytesseract
 Pillow
 pdf2image
-google
 pyyaml
 pandas
-numpy 
+numpy
+
