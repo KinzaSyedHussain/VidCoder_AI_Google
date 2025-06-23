@@ -1,0 +1,48 @@
+agents:
+  - id: input_handler
+    entrypoint: agents/input_handler.py
+
+  - id: media_type
+    entrypoint: agents/media_type.py
+
+  - id: extractor
+    entrypoint: agents/extractor.py
+
+  - id: language_detector
+    entrypoint: agents/language_detector.py
+
+  - id: cleaner
+    entrypoint: agents/cleaner.py
+
+  - id: code_improver
+    entrypoint: agents/code_improver.py
+
+  - id: explanation
+    entrypoint: agents/explanation.py
+
+  - id: output
+    entrypoint: agents/output.py
+
+  - id: transcript_agent
+    entrypoint: agents/transcript_agent.py
+
+  - id: code_generator_agent
+    entrypoint: agents/code_generator_agent.py
+
+  - id: code_enhancer_agent
+    entrypoint: agents/code_enhancer_agent.py
+
+  - id: code_reviewer_agent
+    entrypoint: agents/code_reviewer_agent.py
+
+workflow:
+  - input_handler -> media_type
+  - media_type -> extractor
+  - extractor -> language_detector
+  - language_detector -> cleaner
+  - cleaner -> code_improver
+  - code_improver -> explanation
+  - explanation -> output
+  - transcript_agent -> code_generator_agent
+  - code_generator_agent -> code_enhancer_agent
+  - code_enhancer_agent -> code_reviewer_agent 
