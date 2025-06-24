@@ -1,5 +1,11 @@
-from dotenv import load_dotenv
+import sys
 import os
+
+# Add the project root to the Python path
+# This is necessary for Streamlit Cloud to find the 'code_enhancer_adk' module
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
+from dotenv import load_dotenv
 
 load_dotenv()  # Loads .env file
 
