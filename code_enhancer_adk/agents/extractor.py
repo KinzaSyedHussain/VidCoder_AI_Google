@@ -3,9 +3,8 @@
 import pytesseract
 from PIL import Image
 import os
-import google
-import google.adk
-from google.adk.agents import Agent
+import google_adk_vendor.adk
+from google_adk_vendor.adk.agents import Agent
 from dotenv import load_dotenv
 import google.generativeai as genai
 

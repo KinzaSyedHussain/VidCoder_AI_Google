@@ -1,4 +1,4 @@
-from google.adk.agents import Agent
+from google_adk_vendor.adk.agents import Agent
 import google.generativeai as genai
 import re
 
