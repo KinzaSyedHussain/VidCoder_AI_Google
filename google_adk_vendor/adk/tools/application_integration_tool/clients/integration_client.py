@@ -16,7 +16,7 @@ import json
 from typing import List
 from typing import Optional
 
-from google.adk.tools.application_integration_tool.clients.connections_client import ConnectionsClient
+from google_adk_vendor.adk.tools.application_integration_tool.clients.connections_client import ConnectionsClient
 import google.auth
 from google.auth import default as default_service_credential
 import google.auth.transport.requests

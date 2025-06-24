@@ -19,8 +19,8 @@ from __future__ import annotations
 from typing import Dict
 from typing import Optional
 
-from google.adk.auth.auth_credential import AuthCredentialTypes
-from google.adk.utils.feature_decorator import experimental
+from google_adk_vendor.adk.auth.auth_credential import AuthCredentialTypes
+from google_adk_vendor.adk.utils.feature_decorator import experimental
 
 from .base_credential_refresher import BaseCredentialRefresher
 

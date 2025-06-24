@@ -100,7 +100,7 @@ class RestApiTool(BaseTool):
       tool = [RestApiTool.from_parsed_operation(o) for o in operations]
     ```
 
-    Hint: Use google.adk.tools.openapi_tool.auth.auth_helpers to construct
+    Hint: Use google_adk_vendor.adk.tools.openapi_tool.auth.auth_helpers to construct
     auth_scheme and auth_credential.
 
     Args:

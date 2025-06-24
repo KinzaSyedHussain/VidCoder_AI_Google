@@ -24,7 +24,7 @@ from . import agent
 """
 
 _AGENT_PY_TEMPLATE = """\
-from google.adk.agents import Agent
+from google_adk_vendor.adk.agents import Agent
 
 root_agent = Agent(
     model='{model_name}',

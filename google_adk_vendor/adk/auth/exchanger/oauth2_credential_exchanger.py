@@ -19,12 +19,12 @@ from __future__ import annotations
 import logging
 from typing import Optional
 
-from google.adk.auth.auth_credential import AuthCredential
-from google.adk.auth.auth_schemes import AuthScheme
-from google.adk.auth.auth_schemes import OAuthGrantType
-from google.adk.auth.oauth2_credential_util import create_oauth2_session
-from google.adk.auth.oauth2_credential_util import update_credential_with_tokens
-from google.adk.utils.feature_decorator import experimental
+from google_adk_vendor.adk.auth.auth_credential import AuthCredential
+from google_adk_vendor.adk.auth.auth_schemes import AuthScheme
+from google_adk_vendor.adk.auth.auth_schemes import OAuthGrantType
+from google_adk_vendor.adk.auth.oauth2_credential_util import create_oauth2_session
+from google_adk_vendor.adk.auth.oauth2_credential_util import update_credential_with_tokens
+from google_adk_vendor.adk.utils.feature_decorator import experimental
 from typing_extensions import override
 
 from .base_credential_exchanger import BaseCredentialExchanger

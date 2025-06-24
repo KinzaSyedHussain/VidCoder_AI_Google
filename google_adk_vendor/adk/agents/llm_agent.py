@@ -190,7 +190,7 @@ class LlmAgent(BaseAgent):
   """Instructs the agent to make a plan and execute it step by step.
 
   NOTE: to use model's built-in thinking features, set the `thinking_config`
-  field in `google.adk.planners.built_in_planner`.
+  field in `google_adk_vendor.adk.planners.built_in_planner`.
 
   """
 
@@ -198,7 +198,7 @@ class LlmAgent(BaseAgent):
   """Allow agent to execute code blocks from model responses using the provided
   CodeExecutor.
 
-  Check out available code executions in `google.adk.code_executor` package.
+  Check out available code executions in `google_adk_vendor.adk.code_executor` package.
 
   NOTE: to use model's built-in code executor, use the `BuiltInCodeExecutor`.
   """

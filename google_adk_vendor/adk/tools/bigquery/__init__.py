@@ -15,7 +15,7 @@
 """BigQuery Tools (Experimental).
 
 BigQuery Tools under this module are hand crafted and customized while the tools
-under google.adk.tools.google_api_tool are auto generated based on API
+under google_adk_vendor.adk.tools.google_api_tool are auto generated based on API
 definition. The rationales to have customized tool are:
 
 1. BigQuery APIs have functions overlaps and LLM can't tell what tool to use

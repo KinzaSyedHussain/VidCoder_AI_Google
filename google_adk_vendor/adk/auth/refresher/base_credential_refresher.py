@@ -19,9 +19,9 @@ from __future__ import annotations
 import abc
 from typing import Optional
 
-from google.adk.auth.auth_credential import AuthCredential
-from google.adk.auth.auth_schemes import AuthScheme
-from google.adk.utils.feature_decorator import experimental
+from google_adk_vendor.adk.auth.auth_credential import AuthCredential
+from google_adk_vendor.adk.auth.auth_schemes import AuthScheme
+from google_adk_vendor.adk.utils.feature_decorator import experimental
 
 
 class CredentialRefresherError(Exception):

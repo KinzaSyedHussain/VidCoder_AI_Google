@@ -34,7 +34,7 @@ async def inject_session_state(
   e.g.
   ```
   ...
-  from google.adk.utils import instructions_utils
+  from google_adk_vendor.adk.utils import instructions_utils
 
   async def build_instruction(
       readonly_context: ReadonlyContext,

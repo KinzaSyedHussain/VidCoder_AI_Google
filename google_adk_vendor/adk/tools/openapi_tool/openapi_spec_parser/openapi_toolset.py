@@ -96,10 +96,10 @@ class OpenAPIToolset(BaseToolset):
       spec_str_type: The type of the OpenAPI spec string. Can be "json" or
         "yaml".
       auth_scheme: The auth scheme to use for all tools. Use AuthScheme or use
-        helpers in `google.adk.tools.openapi_tool.auth.auth_helpers`
+        helpers in `google_adk_vendor.adk.tools.openapi_tool.auth.auth_helpers`
       auth_credential: The auth credential to use for all tools. Use
         AuthCredential or use helpers in
-        `google.adk.tools.openapi_tool.auth.auth_helpers`
+        `google_adk_vendor.adk.tools.openapi_tool.auth.auth_helpers`
       tool_filter: The filter used to filter the tools in the toolset. It can be
         either a tool predicate or a list of tool names of the tools to expose.
     """

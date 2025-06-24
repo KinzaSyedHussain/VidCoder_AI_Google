@@ -18,7 +18,7 @@ from typing import List
 from typing import Optional
 from typing import Union
 
-from google.adk.agents.readonly_context import ReadonlyContext
+from google_adk_vendor.adk.agents.readonly_context import ReadonlyContext
 from typing_extensions import override
 
 from . import metadata_tool
