@@ -2,7 +2,7 @@
 import os
 import google.generativeai as genai
 import re
-from google.adk.agents import Agent
+from google_adk_vendor.adk.agents import Agent
 from code_enhancer_adk.agents.language_translator_adk import LanguageTranslatorADKAgent
 
 # Try to import Pygments for local detection
