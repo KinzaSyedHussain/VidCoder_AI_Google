@@ -3,16 +3,17 @@
 # Loads workflow from agent.yaml and orchestrates agents
 
 import os
-from .agents import (
-    input_handler, media_type, extractor, language_detector, cleaner, code_improver, explanation, output,
-    transcript_agent, code_generator_agent, code_enhancer_agent, code_reviewer_agent
-)
 from .agents.language_translator_adk import LanguageTranslatorADKAgent
 
 def process_file(file_path):
     """
     Runs the uploaded file through the agent pipeline and returns the result.
     """
+    from .agents import (
+        input_handler, media_type, extractor, language_detector, cleaner, code_improver, explanation, output,
+        transcript_agent, code_generator_agent, code_enhancer_agent, code_reviewer_agent
+    )
+
     data = {'file_path': file_path}
     # Old pipeline (for compatibility)
     data = input_handler.run(data)
