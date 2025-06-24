@@ -55,11 +55,11 @@ tabs = st.tabs(["📝 Extract & Enhance", "🌐 Translate"])
 
 # --- Tab 1: Extract & Enhance ---
 with tabs[0]:
-    st.title("✅ VidCoder AI")
-    st.markdown("Upload an image containing code, and let AI extract and refine it for you.")
+    st.title("✅ VidCoder AI (Updated)")
+    st.markdown("Upload a video, image, or PDF containing code, and let AI extract and refine it for you.")
     uploaded_file = st.file_uploader(
         "Choose a file",
-        type=[ 'png', 'jpg', 'jpeg', 'pdf'],
+        type=['mp4', 'mov', 'avi', 'png', 'jpg', 'jpeg', 'pdf'],
         key=st.session_state.upload_key
     )
     if uploaded_file is not None:
